@@ -1,1 +1,1 @@
-Files for Aritficial Intelligence in Cybersecurity course
+Files for Artificial Intelligence in Cybersecurity course
