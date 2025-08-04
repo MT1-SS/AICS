@@ -896,17 +896,18 @@ with tab5:
     if recommendations:
         rec_df = pd.DataFrame(recommendations)
         
-        # Color code by priority
-        def color_priority(val):
-            if val == 'High':
-                return 'background-color: #ffebee'
-            elif val == 'Medium':
-                return 'background-color: #fff3e0'
+        # Add visual priority indicators instead of background coloring
+        def format_priority(priority):
+            if priority == 'High':
+                return "🔴 High"
+            elif priority == 'Medium':
+                return "🟡 Medium"
             else:
-                return 'background-color: #e8f5e8'
+                return "🟢 Low"
         
-        styled_rec = rec_df.style.applymap(color_priority, subset=['Priority'])
-        st.dataframe(styled_rec, use_container_width=True)
+        rec_df['Priority'] = rec_df['Priority'].apply(format_priority)
+        
+        st.dataframe(rec_df, use_container_width=True)
     
     # Implementation Roadmap
     st.subheader("🗺️ AI Security Implementation Roadmap")
